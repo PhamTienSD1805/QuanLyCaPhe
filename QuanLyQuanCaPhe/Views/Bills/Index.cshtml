@@ -1,0 +1,105 @@
+@model IEnumerable<QuanLyQuanCaPhe.Models.BillRowViewModel>
+@{
+    ViewData["Title"] = "Hóa đơn";
+    string? filterStatus = ViewBag.FilterStatus as string;
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-receipt me-2"></i>Danh sách hóa đơn</h4>
+    <a asp-action="Create" class="btn btn-coffee">
+        <i class="bi bi-cart-plus me-1"></i>Bán hàng mới
+    </a>
+</div>
+
+<!-- Filter by status (Manager only) -->
+@if (User.IsInRole("Manager"))
+{
+    <div class="card mb-3">
+        <div class="card-body py-2">
+            <form method="get" class="d-flex gap-2 align-items-center flex-wrap">
+                <span class="text-muted small fw-semibold">Lọc trạng thái:</span>
+                @foreach (var (val, lbl, icon, cls) in new[]{
+                    ("", "Tất cả", "bi-list-ul", "btn-outline-secondary"),
+                    ("1", "Hoàn thành", "bi-check-circle", "btn-outline-success"),
+                    ("0", "Đang chờ", "bi-hourglass-split", "btn-outline-warning"),
+                    ("2", "Đã hủy", "bi-x-circle", "btn-outline-danger")
+                })
+                {
+                    <a asp-action="Index" asp-route-status="@val"
+                       class="btn btn-sm @cls @(filterStatus == val ? "active" : "")">
+                        <i class="bi @icon me-1"></i>@lbl
+                    </a>
+                }
+            </form>
+        </div>
+    </div>
+}
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Thời gian</th>
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <th><i class="bi bi-person me-1"></i>Nhân viên</th>
+                        }
+                        <th class="text-end">Tổng tiền</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center">Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in Model)
+                    {
+                        var (cls, lbl) = b.Status switch
+                        {
+                            QuanLyQuanCaPhe.Models.BillStatus.Done      => ("bg-success",          "Hoàn thành"),
+                            QuanLyQuanCaPhe.Models.BillStatus.Pending   => ("bg-warning text-dark", "Chờ"),
+                            QuanLyQuanCaPhe.Models.BillStatus.Cancelled => ("bg-secondary",         "Đã hủy"),
+                            _                                            => ("bg-light text-dark",   "—")
+                        };
+                        <tr>
+                            <td class="fw-semibold">@b.Code</td>
+                            <td class="text-muted">@b.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <td>
+                                    <span class="fw-medium">@b.EmployeeName</span>
+                                    <br /><small class="text-muted">@b.EmployeeEmail</small>
+                                </td>
+                            }
+                            <td class="text-end fw-semibold">@b.Total.ToString("N0") đ</td>
+                            <td class="text-center"><span class="badge @cls">@lbl</span></td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-sm btn-outline-coffee">
+                                    <i class="bi bi-eye me-1"></i>Xem
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="@(User.IsInRole("Manager") ? 6 : 5)"
+                                class="text-center text-muted py-5">
+                                <i class="bi bi-receipt d-block fs-2 mb-2"></i>
+                                Chưa có hóa đơn nào
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @if (Model.Any())
+    {
+        <div class="card-footer d-flex justify-content-between text-muted small">
+            <span>Tổng: <strong>@Model.Count()</strong> hóa đơn</span>
+            <span>Doanh thu: <strong class="text-success">@Model.Where(b => b.Status == QuanLyQuanCaPhe.Models.BillStatus.Done).Sum(b => b.Total).ToString("N0") đ</strong></span>
+        </div>
+    }
+</div>

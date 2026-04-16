@@ -1,0 +1,77 @@
+@model IEnumerable<QuanLyQuanCaPhe.Models.User>
+@{
+    ViewData["Title"] = "Nhân viên";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-people me-2"></i>Danh sách nhân viên</h4>
+    <a asp-action="Create" class="btn btn-coffee">
+        <i class="bi bi-person-plus me-1"></i>Thêm nhân viên
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Điện thoại</th>
+                        <th class="text-center">Vai trò</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var u in Model)
+                    {
+                        <tr>
+                            <td class="text-muted">@u.Id</td>
+                            <td class="fw-semibold">@u.FullName</td>
+                            <td class="text-muted">@u.Email</td>
+                            <td class="text-muted">@(u.Phone ?? "—")</td>
+                            <td class="text-center">
+                                <span class="badge @(u.Role ? "bg-warning text-dark" : "bg-secondary")">
+                                    @(u.Role ? "Quản lý" : "Nhân viên")
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span class="badge @(u.Active ? "bg-success" : "bg-secondary")">
+                                    @(u.Active ? "Hoạt động" : "Đã khóa")
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@u.Id"
+                                   class="btn btn-sm btn-outline-warning" title="Chỉnh sửa">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                @if (!u.Role)  @* Chỉ hiện nút khóa cho Nhân viên, không cho Quản lý *@
+                                {
+                                    <a asp-action="Delete" asp-route-id="@u.Id"
+                                       class="btn btn-sm @(u.Active ? "btn-outline-danger" : "btn-outline-secondary")"
+                                       title="@(u.Active ? "Khóa tài khoản" : "Mở khóa")">
+                                        <i class="bi @(u.Active ? "bi-person-x" : "bi-person-check")"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="btn btn-sm btn-outline-light text-muted" style="cursor:default;"
+                                          title="Không thể khóa tài khoản Quản lý">
+                                        <i class="bi bi-shield-lock"></i>
+                                    </span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="7" class="text-center text-muted py-5">Chưa có nhân viên nào</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

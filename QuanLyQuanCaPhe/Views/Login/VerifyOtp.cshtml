@@ -1,0 +1,327 @@
+@model QuanLyQuanCaPhe.Models.VerifyOtpViewModel
+@{
+    ViewData["Title"] = "Nhập mã OTP";
+    Layout = "_Layout";
+    string otpExpiry = ViewBag.OtpExpiry as string ?? "";
+    string otpSentAt = ViewBag.OtpSentAt as string ?? "";
+    string otpEmail  = ViewBag.OtpEmail as string ?? Model.Email;
+}
+
+<div class="d-flex align-items-center justify-content-center" style="min-height:80vh;">
+    <div style="width:100%;max-width:440px;">
+
+        <!-- Stepper -->
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+            <div class="d-flex flex-column align-items-center">
+                <div class="rounded-circle d-flex align-items-center justify-content-center"
+                     style="width:36px;height:36px;background:#28a745;color:#fff;">
+                    <i class="bi bi-check-lg"></i>
+                </div>
+                <small class="mt-1 text-success fw-semibold">Nhập email</small>
+            </div>
+            <div style="width:50px;height:2px;background:var(--color-primary);margin-bottom:18px;"></div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                     style="width:36px;height:36px;background:var(--color-primary);color:#fff;">2</div>
+                <small class="mt-1 fw-semibold" style="color:var(--color-primary);">Xác nhận OTP</small>
+            </div>
+            <div style="width:50px;height:2px;background:#dee2e6;margin-bottom:18px;"></div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                     style="width:36px;height:36px;background:#dee2e6;color:#999;">3</div>
+                <small class="mt-1 text-muted">Mật khẩu mới</small>
+            </div>
+        </div>
+
+        <!-- Success alert -->
+        @if (ViewBag.OtpSentMessage != null)
+        {
+            <div class="alert alert-success d-flex gap-2 align-items-center mb-3 py-2">
+                <i class="bi bi-check-circle-fill flex-shrink-0"></i>
+                <span class="small">@ViewBag.OtpSentMessage</span>
+            </div>
+        }
+
+        <!-- Resend result alert (AJAX) -->
+        <div id="resend-alert" class="alert py-2 small d-none mb-3"></div>
+
+        <!-- Countdown timer -->
+        <div class="card mb-3 border-0 shadow-sm" id="countdown-card">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <span class="small text-muted">
+                    <i class="bi bi-clock-history me-1"></i>Mã hết hạn sau:
+                </span>
+                <span id="otp-timer" class="fw-bold fs-5" style="color:var(--color-primary);">05:00</span>
+                <span id="otp-expired-badge" class="badge bg-danger d-none">Đã hết hạn</span>
+            </div>
+            <div class="progress" style="height:3px;border-radius:0 0 4px 4px;">
+                <div id="otp-progress" class="progress-bar"
+                     style="background:var(--color-primary);width:100%;transition:width 1s linear;"></div>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <div class="card shadow-sm">
+            <div class="card-header text-center" style="background:var(--color-primary);color:#fff;">
+                <i class="bi bi-shield-check me-2"></i>
+                <span class="fw-semibold">Xác nhận mã OTP</span>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-muted small text-center mb-4">
+                    Nhập mã 6 chữ số đã gửi đến <strong>@Model.Email</strong>
+                </p>
+
+                <form asp-action="VerifyOtp" method="post" id="otp-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Email" />
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+                    <div class="mb-4">
+                        <label asp-for="OtpCode" class="form-label fw-semibold text-center d-block"></label>
+                        <input asp-for="OtpCode"
+                               id="otp-input"
+                               class="form-control text-center fw-bold"
+                               style="font-size:2rem;letter-spacing:12px;"
+                               placeholder="000000"
+                               maxlength="6"
+                               autocomplete="one-time-code"
+                               inputmode="numeric"
+                               autofocus />
+                        <span asp-validation-for="OtpCode" class="text-danger small d-block text-center mt-1"></span>
+                    </div>
+
+                    <div class="d-grid mb-3">
+                        <button type="submit" id="submit-btn" class="btn btn-coffee">
+                            <i class="bi bi-arrow-right-circle me-1"></i>Xác nhận OTP
+                        </button>
+                    </div>
+                </form>
+
+                <hr class="my-3" />
+                <div class="text-center small d-flex justify-content-center gap-3">
+                    <a href="javascript:void(0)" id="resend-link"
+                       class="text-decoration-none" style="color:var(--color-primary);">
+                        <i class="bi bi-arrow-repeat me-1"></i>Gửi lại OTP
+                        <span id="resend-cooldown" class="text-muted d-none">
+                            (<span id="resend-seconds">60</span>s)
+                        </span>
+                    </a>
+                    <span class="text-muted">|</span>
+                    <a asp-action="Login" class="text-decoration-none" style="color:var(--color-primary);">
+                        <i class="bi bi-arrow-left me-1"></i>Đăng nhập
+                    </a>
+                </div>
+            </div>
+            <div class="card-footer text-center text-muted small">
+                <i class="bi bi-info-circle me-1"></i>
+                OTP dùng <strong>một lần</strong>, hiệu lực <strong>5 phút</strong>, gửi lại cách nhau <strong>60 giây</strong>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+    (function () {
+        // ============================================================
+        // CONFIG — nhận từ server
+        // ============================================================
+        const TOTAL_MS      = 5 * 60 * 1000;    // 5 phút
+        const COOLDOWN_SECS = 60;
+
+        let expiryDate  = '@Html.Raw(otpExpiry)' ? new Date('@Html.Raw(otpExpiry)') : null;
+        let sentAtDate  = '@Html.Raw(otpSentAt)' ? new Date('@Html.Raw(otpSentAt)') : null;
+        const email     = '@Html.Raw(otpEmail)';
+        const afToken   = document.querySelector('input[name="__RequestVerificationToken"]')?.value || '';
+
+        // ============================================================
+        // OTP Input — chỉ cho nhập số
+        // ============================================================
+        const otpInput = document.getElementById('otp-input');
+        otpInput?.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '').substring(0, 6);
+        });
+
+        // ============================================================
+        // COUNTDOWN TIMER — đếm ngược thời gian hết hạn OTP (5 phút)
+        // ============================================================
+        const timerEl    = document.getElementById('otp-timer');
+        const progressEl = document.getElementById('otp-progress');
+        const submitBtn  = document.getElementById('submit-btn');
+        const badgeEl    = document.getElementById('otp-expired-badge');
+        let   timerInterval = null;
+
+        function startCountdown() {
+            // Dọn interval cũ
+            if (timerInterval) clearInterval(timerInterval);
+
+            // Ẩn badge, hiển thị timer
+            timerEl?.classList.remove('d-none');
+            badgeEl?.classList.add('d-none');
+
+            // Reset nút submit
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.className = 'btn btn-coffee';
+                submitBtn.innerHTML = '<i class="bi bi-arrow-right-circle me-1"></i>Xác nhận OTP';
+            }
+
+            function tick() {
+                if (!expiryDate) return;
+
+                const remaining = expiryDate - new Date();
+                if (remaining <= 0) {
+                    // Hết hạn
+                    timerEl?.classList.add('d-none');
+                    badgeEl?.classList.remove('d-none');
+                    if (progressEl) progressEl.style.width = '0%';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'OTP đã hết hạn — Vui lòng gửi mã mới';
+                        submitBtn.className = 'btn btn-secondary w-100';
+                    }
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    return;
+                }
+
+                const m = Math.floor(remaining / 60000);
+                const s = Math.floor((remaining % 60000) / 1000);
+                if (timerEl) {
+                    timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                    timerEl.style.color = remaining < 60000 ? '#dc3545' : 'var(--color-primary)';
+                }
+                if (progressEl) {
+                    progressEl.style.width = (remaining / TOTAL_MS * 100) + '%';
+                    progressEl.style.background = remaining < 60000 ? '#dc3545' : 'var(--color-primary)';
+                }
+            }
+
+            tick();
+            timerInterval = setInterval(tick, 1000);
+        }
+
+        // Khởi chạy countdown ban đầu
+        if (expiryDate) startCountdown();
+
+        // ============================================================
+        // RESEND COOLDOWN — bộ đếm 60 giây chống spam gửi lại
+        // ============================================================
+        const resendLink     = document.getElementById('resend-link');
+        const cooldownEl     = document.getElementById('resend-cooldown');
+        const secsEl         = document.getElementById('resend-seconds');
+        let   cooldownTimer  = null;
+
+        function startCooldown(sentAt) {
+            if (cooldownTimer) clearInterval(cooldownTimer);
+
+            function updateCooldown() {
+                if (!sentAt) return;
+
+                const elapsed = Math.floor((Date.now() - sentAt.getTime()) / 1000);
+                const left    = COOLDOWN_SECS - elapsed;
+
+                if (left > 0) {
+                    cooldownEl?.classList.remove('d-none');
+                    if (secsEl) secsEl.textContent = left;
+                    if (resendLink) {
+                        resendLink.style.pointerEvents = 'none';
+                        resendLink.style.opacity = '0.5';
+                    }
+                } else {
+                    cooldownEl?.classList.add('d-none');
+                    if (resendLink) {
+                        resendLink.style.pointerEvents = 'auto';
+                        resendLink.style.opacity = '1';
+                    }
+                    clearInterval(cooldownTimer);
+                    cooldownTimer = null;
+                }
+            }
+
+            updateCooldown();
+            cooldownTimer = setInterval(updateCooldown, 1000);
+        }
+
+        // Khởi chạy cooldown ban đầu
+        if (sentAtDate) startCooldown(sentAtDate);
+
+        // ============================================================
+        // RESEND OTP — gọi AJAX POST /Login/ResendOtp
+        // ============================================================
+        const alertEl = document.getElementById('resend-alert');
+
+        function showAlert(msg, isSuccess) {
+            alertEl.textContent = msg;
+            alertEl.className = 'alert py-2 small mb-3 ' +
+                (isSuccess ? 'alert-success' : 'alert-warning');
+            alertEl.classList.remove('d-none');
+            // Tự ẩn sau 5 giây
+            setTimeout(() => alertEl.classList.add('d-none'), 5000);
+        }
+
+        resendLink?.addEventListener('click', async function (e) {
+            e.preventDefault();
+
+            // Nếu đang cooldown → bỏ qua
+            if (resendLink.style.pointerEvents === 'none') return;
+
+            // Disable link ngay
+            resendLink.style.pointerEvents = 'none';
+            resendLink.style.opacity = '0.5';
+
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('__RequestVerificationToken', afToken);
+
+                const resp = await fetch('@Url.Action("ResendOtp", "Login")', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await resp.json();
+
+                if (data.success) {
+                    showAlert(data.message, true);
+
+                    // Cập nhật thời gian hết hạn mới
+                    if (data.expiry) {
+                        expiryDate = new Date(data.expiry);
+                        startCountdown();
+                    }
+                    // Bắt đầu cooldown mới
+                    if (data.sentAt) {
+                        sentAtDate = new Date(data.sentAt);
+                        startCooldown(sentAtDate);
+                    } else {
+                        sentAtDate = new Date();
+                        startCooldown(sentAtDate);
+                    }
+
+                    // Clear input
+                    if (otpInput) otpInput.value = '';
+                    otpInput?.focus();
+                } else {
+                    showAlert(data.message, false);
+                    // Server trả về cooldown còn lại
+                    if (data.cooldown && data.cooldown > 0) {
+                        sentAtDate = new Date(Date.now() - (COOLDOWN_SECS - data.cooldown) * 1000);
+                        startCooldown(sentAtDate);
+                    } else {
+                        resendLink.style.pointerEvents = 'auto';
+                        resendLink.style.opacity = '1';
+                    }
+                }
+            } catch (err) {
+                showAlert('Có lỗi xảy ra. Vui lòng thử lại.', false);
+                resendLink.style.pointerEvents = 'auto';
+                resendLink.style.opacity = '1';
+            }
+        });
+    })();
+    </script>
+}

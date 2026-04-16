@@ -1,0 +1,149 @@
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\appsettings.Development.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\appsettings.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.staticwebassets.runtime.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.staticwebassets.endpoints.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.exe
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.deps.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.runtimeconfig.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.pdb
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Azure.Core.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Azure.Identity.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.ClientModel.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Memory.Data.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Runtime.Caching.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.csproj.AssemblyReference.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.GeneratedMSBuildEditorConfig.editorconfig
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.AssemblyInfoInputs.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.AssemblyInfo.cs
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.csproj.CoreCompileInputs.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.MvcApplicationPartsAssemblyInfo.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.RazorAssemblyInfo.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.RazorAssemblyInfo.cs
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\bundle\QuanLyQuanCaPhe.styles.css
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\projectbundle\QuanLyQuanCaPhe.bundle.scp.css
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.development.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\swae.build.ex.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQu.E4A908DB.Up2Date
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\refint\QuanLyQuanCaPhe.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.pdb
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.genruntimeconfig.cache
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\ref\QuanLyQuanCaPhe.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\MailKit.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\MimeKit.dll
+D:\fpt\NET202\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\appsettings.Development.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\appsettings.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.staticwebassets.runtime.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.staticwebassets.endpoints.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.exe
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.deps.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.runtimeconfig.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\QuanLyQuanCaPhe.pdb
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Azure.Core.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Azure.Identity.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\MailKit.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\MimeKit.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.ClientModel.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Memory.Data.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.csproj.AssemblyReference.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.GeneratedMSBuildEditorConfig.editorconfig
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.AssemblyInfoInputs.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.AssemblyInfo.cs
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.csproj.CoreCompileInputs.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.MvcApplicationPartsAssemblyInfo.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.RazorAssemblyInfo.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.RazorAssemblyInfo.cs
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\bundle\QuanLyQuanCaPhe.styles.css
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\scopedcss\projectbundle\QuanLyQuanCaPhe.bundle.scp.css
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.development.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQu.E4A908DB.Up2Date
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\refint\QuanLyQuanCaPhe.dll
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.pdb
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\QuanLyQuanCaPhe.genruntimeconfig.cache
+C:\NET202 - Lập trình C#5\QuanLyQuanCaPhe\QuanLyQuanCaPhe\obj\Debug\net8.0\ref\QuanLyQuanCaPhe.dll

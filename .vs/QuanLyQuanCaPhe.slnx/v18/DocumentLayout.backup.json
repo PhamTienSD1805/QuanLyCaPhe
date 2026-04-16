@@ -1,0 +1,233 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe.tests\\tests\\logintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|solutionrelative:quanlyquancaphe.tests\\tests\\logintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe.tests\\tests\\drinktests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|solutionrelative:quanlyquancaphe.tests\\tests\\drinktests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe.tests\\tests\\checkouttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|solutionrelative:quanlyquancaphe.tests\\tests\\checkouttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe.tests\\basetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|solutionrelative:quanlyquancaphe.tests\\basetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe.tests\\testconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12EF1E2-2F16-004A-299D-D0BD5F57F7F7}|QuanLyQuanCaPhe.Tests\\QuanLyQuanCaPhe.Tests.csproj|solutionrelative:quanlyquancaphe.tests\\testconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\views\\stats\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\views\\stats\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\database\\quanlyquancafe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\database\\quanlyquancafe.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\views\\bills\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\views\\bills\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\views\\drinks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\views\\drinks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\dal\\billdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\dal\\billdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|d:\\fpt\\net202\\quanlyquancaphe\\quanlyquancaphe\\utils\\dbutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45D8A5DF-9385-BEFD-FB0C-9C4311A01030}|QuanLyQuanCaPhe\\QuanLyQuanCaPhe.csproj|solutionrelative:quanlyquancaphe\\utils\\dbutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginTests.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\LoginTests.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe.Tests\\Tests\\LoginTests.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\LoginTests.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe.Tests\\Tests\\LoginTests.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T03:59:31.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DrinkTests.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\DrinkTests.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe.Tests\\Tests\\DrinkTests.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\DrinkTests.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe.Tests\\Tests\\DrinkTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T03:59:29.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CheckoutTests.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\CheckoutTests.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe.Tests\\Tests\\CheckoutTests.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\Tests\\CheckoutTests.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe.Tests\\Tests\\CheckoutTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T03:59:28.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TestConfig.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\TestConfig.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe.Tests\\TestConfig.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\TestConfig.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe.Tests\\TestConfig.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T03:45:48.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BaseTest.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\BaseTest.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe.Tests\\BaseTest.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe.Tests\\BaseTest.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe.Tests\\BaseTest.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAuwCgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T03:45:06.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\appsettings.json",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\appsettings.json",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\appsettings.json",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-04T03:28:41.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-03T13:10:09.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "QuanLyQuanCafe.sql",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Database\\QuanLyQuanCafe.sql",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\Database\\QuanLyQuanCafe.sql",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Database\\QuanLyQuanCafe.sql",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\Database\\QuanLyQuanCafe.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-03T13:07:03.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Stats\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\Views\\Stats\\Index.cshtml",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Stats\\Index.cshtml",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\Views\\Stats\\Index.cshtml",
+              "ViewState": "AgIAALAAAAAAAAAAAAAowL8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-03T07:24:45.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Drinks\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\Views\\Drinks\\Index.cshtml",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Drinks\\Index.cshtml",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\Views\\Drinks\\Index.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwB8AAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T03:08:44.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Bills\\Create.cshtml",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\Views\\Bills\\Create.cshtml",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Views\\Bills\\Create.cshtml",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\Views\\Bills\\Create.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAewBsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T03:07:21.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BillDAL.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\DAL\\BillDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\DAL\\BillDAL.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\DAL\\BillDAL.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\DAL\\BillDAL.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAiwDEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T03:06:42.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DBUtil.cs",
+              "DocumentMoniker": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Utils\\DBUtil.cs",
+              "RelativeDocumentMoniker": "QuanLyQuanCaPhe\\Utils\\DBUtil.cs",
+              "ToolTip": "D:\\fpt\\NET202\\QuanLyQuanCaPhe\\QuanLyQuanCaPhe\\Utils\\DBUtil.cs",
+              "RelativeToolTip": "QuanLyQuanCaPhe\\Utils\\DBUtil.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAIwIYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T02:58:41.498Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

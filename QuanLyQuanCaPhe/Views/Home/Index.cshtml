@@ -1,0 +1,113 @@
+@model QuanLyQuanCaPhe.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-speedometer2 me-2"></i>Dashboard</h4>
+    <small class="text-muted">@DateTime.Now.ToString("dddd, dd/MM/yyyy", new System.Globalization.CultureInfo("vi-VN"))</small>
+</div>
+
+<!-- Stat cards -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card brown">
+            <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalBills</div>
+                <div class="stat-label">Tổng hóa đơn</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card green">
+            <div class="stat-icon"><i class="bi bi-cash-coin"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalRevenue.ToString("N0")</div>
+                <div class="stat-label">Doanh thu (đ)</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card amber">
+            <div class="stat-icon"><i class="bi bi-cup-straw"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalDrinks</div>
+                <div class="stat-label">Đồ uống đang bán</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card slate">
+            <div class="stat-icon"><i class="bi bi-people"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalUsers</div>
+                <div class="stat-label">Nhân viên</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Bills -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-clock-history me-2"></i>Hóa đơn gần nhất</span>
+        <a asp-controller="Bills" asp-action="Index" class="btn btn-sm btn-outline-coffee">Xem tất cả</a>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>Mã HĐ</th>
+                        <th>Thời gian</th>
+                        <th class="text-end">Tổng tiền</th>
+                        <th class="text-center">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bill in Model.RecentBills)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Bills" asp-action="Details" asp-route-id="@bill.Id"
+                                   class="fw-semibold text-decoration-none">@bill.Code</a>
+                            </td>
+                            <td class="text-muted">@bill.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-end fw-semibold">@bill.Total.ToString("N0") đ</td>
+                            <td class="text-center">
+                                @{
+                                    var (cls, lbl) = bill.Status switch
+                                    {
+                                        QuanLyQuanCaPhe.Models.BillStatus.Done      => ("bg-success",          "Hoàn thành"),
+                                        QuanLyQuanCaPhe.Models.BillStatus.Pending   => ("bg-warning text-dark", "Chờ"),
+                                        QuanLyQuanCaPhe.Models.BillStatus.Cancelled => ("bg-secondary",         "Đã hủy"),
+                                        _                                            => ("bg-light text-dark",   "—")
+                                    };
+                                }
+                                <span class="badge @cls">@lbl</span>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.RecentBills.Any())
+                    {
+                        <tr><td colspan="4" class="text-center text-muted py-4">Chưa có hóa đơn nào</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Quick actions -->
+<div class="mt-4 d-flex gap-2 flex-wrap">
+    <a asp-controller="Bills" asp-action="Create" class="btn btn-coffee">
+        <i class="bi bi-cart-plus me-1"></i>Bán hàng ngay
+    </a>
+    @if (User.IsInRole("Manager"))
+    {
+        <a asp-controller="Drinks" asp-action="Create" class="btn btn-secondary">
+            <i class="bi bi-plus-circle me-1"></i>Thêm đồ uống
+        </a>
+    }
+</div>

@@ -1,0 +1,91 @@
+@model QuanLyQuanCaPhe.Models.DrinkViewModel
+@{
+    ViewData["Title"] = "Sửa đồ uống";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-pencil me-2"></i>Sửa đồ uống</h4>
+    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Quay lại</a>
+</div>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ExistingImage" />
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label"></label>
+                        <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                            <option value="">-- Chọn danh mục --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Price" class="form-label"></label>
+                        <div class="input-group">
+                            <input asp-for="Price" type="number" min="1" class="form-control" />
+                            <span class="input-group-text">đ</span>
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ImageFile" class="form-label"></label>
+                        @if (!string.IsNullOrEmpty(Model.ExistingImage))
+                        {
+                            <div class="mb-2">
+                                <img src="@Model.ExistingImage" id="imgPreview" alt="Ảnh hiện tại"
+                                     style="width:100px;height:100px;object-fit:cover;border-radius:8px;" />
+                                <div class="text-muted" style="font-size:.8rem;margin-top:4px;">Tải lên để thay thế</div>
+                            </div>
+                        }
+                        else
+                        {
+                            <img id="imgPreview" src="#" style="max-width:100px;max-height:100px;object-fit:cover;border-radius:8px;display:none;margin-bottom:8px;" />
+                        }
+                        <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" id="imgInput" />
+                    </div>
+
+                    <div class="mb-4 form-check">
+                        <input asp-for="Active" class="form-check-input" type="checkbox" />
+                        <label asp-for="Active" class="form-check-label">Đang bán</label>
+                    </div>
+
+                    <div class="d-flex">
+                        <button type="submit" class="btn btn-coffee"><i class="bi bi-check-circle me-1"></i>Cập nhật</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('imgInput').addEventListener('change', function(e) {
+            const file = e.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = ev => { const img = document.getElementById('imgPreview'); img.src = ev.target.result; img.style.display = 'block'; };
+            reader.readAsDataURL(file);
+        });
+    </script>
+}

@@ -1,0 +1,394 @@
+﻿@model QuanLyQuanCaPhe.Models.StatsViewModel
+@{
+    ViewData["Title"] = "Thống kê";
+    int currentYear  = Model.Year;
+    int currentMonth = Model.Month ?? DateTime.Now.Month;
+    string mode      = Model.Mode;
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-bar-chart-line me-2"></i>Thống kê doanh thu</h4>
+    <small class="text-muted">Chỉ Manager xem được trang này</small>
+</div>
+
+<!-- ================================================================ -->
+<!-- FILTER FORM                                                        -->
+<!-- ================================================================ -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <!-- Mode -->
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Chế độ xem</label>
+                <select name="mode" id="stat-mode" class="form-select" onchange="this.form.submit()">
+                    <option value="day"   @(mode == "day"   ? "selected" : "")>Theo ngày</option>
+                    <option value="month" @(mode == "month" ? "selected" : "")>Theo tháng</option>
+                    <option value="year"  @(mode == "year"  ? "selected" : "")>Theo năm</option>
+                </select>
+            </div>
+
+            <!-- Year (always shown) -->
+            <div class="col-md-2" id="year-block">
+                <label class="form-label fw-semibold">Năm</label>
+                <input type="number" name="year" value="@currentYear" min="2020" max="2099"
+                       class="form-control" />
+            </div>
+
+            <!-- Month (only for day mode) -->
+            @if (mode == "day")
+            {
+                <div class="col-md-2" id="month-block">
+                    <label class="form-label fw-semibold">Tháng</label>
+                    <select name="month" class="form-select">
+                        @for (int m = 1; m <= 12; m++)
+                        {
+                            <option value="@m" @(m == currentMonth ? "selected" : "")>Tháng @m</option>
+                        }
+                    </select>
+                </div>
+            }
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-coffee w-100">
+                    <i class="bi bi-funnel me-1"></i>Lọc
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- KPI CARDS                                                          -->
+<!-- ================================================================ -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card brown">
+            <div class="stat-icon"><i class="bi bi-cash-coin"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalRevenue.ToString("N0")</div>
+                <div class="stat-label">Doanh thu (đ)</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card green">
+            <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+            <div>
+                <div class="stat-value">@Model.TotalOrders</div>
+                <div class="stat-label">Số đơn hàng</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card amber">
+            <div class="stat-icon"><i class="bi bi-trophy"></i></div>
+            <div>
+                <div class="stat-value">@(Model.TopDrinks.FirstOrDefault()?.DrinkName ?? "—")</div>
+                <div class="stat-label">Bán chạy nhất</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card slate">
+            <div class="stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <div>
+                <div class="stat-value">
+                    @(Model.TotalOrders > 0
+                        ? (Model.TotalRevenue / Model.TotalOrders).ToString("N0")
+                        : "0")
+                </div>
+                <div class="stat-label">Trung bình/đơn (đ)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- CHARTS ROW                                                         -->
+<!-- ================================================================ -->
+<div class="row g-4 mb-4">
+
+    <!-- Revenue Chart (Line) -->
+    <div class="col-lg-8">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="fw-semibold">
+                    <i class="bi bi-graph-up me-2" style="color:var(--color-primary);"></i>
+                    Doanh thu
+                    @(mode == "day" ? $"theo ngày — Tháng {currentMonth}/{currentYear}"
+                      : mode == "month" ? $"theo tháng — Năm {currentYear}"
+                      : "theo năm")
+                </span>
+                <span class="badge" style="background:var(--color-primary);">
+                    @Model.RevenueData.Count điểm dữ liệu
+                </span>
+            </div>
+            <div class="card-body" style="position:relative;height:300px;">
+                @if (Model.RevenueData.Any())
+                {
+                    <canvas id="revenueChart"></canvas>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                        <div class="text-center">
+                            <i class="bi bi-bar-chart-line fs-1 d-block mb-2"></i>
+                            Chưa có dữ liệu cho kỳ này
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 5 Chart (Horizontal Bar) -->
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <span class="fw-semibold">
+                    <i class="bi bi-trophy me-2" style="color:#f59e0b;"></i>
+                    Top 5 đồ uống bán chạy
+                </span>
+            </div>
+            <div class="card-body" style="position:relative;height:300px;">
+                @if (Model.TopDrinks.Any())
+                {
+                    <canvas id="top5Chart"></canvas>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                        <div class="text-center">
+                            <i class="bi bi-cup-straw fs-1 d-block mb-2"></i>
+                            Chưa có dữ liệu
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- TOP 5 TABLE + Revenue breakdown                                    -->
+<!-- ================================================================ -->
+<div class="row g-4">
+
+    <!-- Top 5 table -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <span class="fw-semibold"><i class="bi bi-list-ol me-2"></i>Chi tiết Top 5</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Đồ uống</th>
+                            <th class="text-center">Số lượng</th>
+                            <th class="text-end">Doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int rk = 1; }
+                        @foreach (var item in Model.TopDrinks)
+                        {
+                            <tr>
+                                <td>
+                                    <span class="badge @(rk == 1 ? "bg-warning text-dark" : rk == 2 ? "bg-secondary" : "bg-light text-dark")">
+                                        @rk
+                                    </span>
+                                </td>
+                                <td class="fw-medium">@item.DrinkName</td>
+                                <td class="text-center">@item.TotalSold</td>
+                                <td class="text-end text-success fw-semibold">@item.Revenue.ToString("N0") đ</td>
+                            </tr>
+                            rk++;
+                        }
+                        @if (!Model.TopDrinks.Any())
+                        {
+                            <tr><td colspan="4" class="text-center text-muted py-4">Chưa có dữ liệu</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revenue breakdown table -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <span class="fw-semibold"><i class="bi bi-table me-2"></i>Bảng doanh thu</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Kỳ</th>
+                            <th class="text-center">Số đơn</th>
+                            <th class="text-end">Doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var r in Model.RevenueData)
+                        {
+                            <tr>
+                                <td class="fw-medium">@r.Label</td>
+                                <td class="text-center">@r.Orders</td>
+                                <td class="text-end fw-semibold text-success">@r.Amount.ToString("N0") đ</td>
+                            </tr>
+                        }
+                        @if (!Model.RevenueData.Any())
+                        {
+                            <tr><td colspan="3" class="text-center text-muted py-4">Chưa có dữ liệu</td></tr>
+                        }
+                    </tbody>
+                    @if (Model.RevenueData.Any())
+                    {
+                        <tfoot class="table-light">
+                            <tr>
+                                <td class="fw-bold">Tổng</td>
+                                <td class="text-center fw-bold">@Model.TotalOrders</td>
+                                <td class="text-end fw-bold text-success">@Model.TotalRevenue.ToString("N0") đ</td>
+                            </tr>
+                        </tfoot>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- CHART.JS — CDN + Scripts                                           -->
+<!-- ================================================================ -->
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+    // ── Dữ liệu từ Controller (JSON được Razor render inline) ──────────
+    const revenueLabels  = @Html.Raw(ViewBag.RevenueLabels  ?? "[]");
+    const revenueAmounts = @Html.Raw(ViewBag.RevenueAmounts ?? "[]");
+    const revenueOrders  = @Html.Raw(ViewBag.RevenueOrders  ?? "[]");
+    const top5Names      = @Html.Raw(ViewBag.Top5Names      ?? "[]");
+    const top5Sold       = @Html.Raw(ViewBag.Top5Sold       ?? "[]");
+    const top5Revenue    = @Html.Raw(ViewBag.Top5Revenue    ?? "[]");
+
+    // ── Màu sắc ────────────────────────────────────────────────────────
+    const primaryColor = 'rgba(111, 78, 55, 0.85)';
+    const primaryBorder = 'rgba(111, 78, 55, 1)';
+    const accentColor  = 'rgba(245, 158, 11, 0.8)';
+    const greenColor   = 'rgba(16, 185, 129, 0.8)';
+    const top5Colors   = [
+        'rgba(111,78,55,0.85)', 'rgba(161,128,105,0.8)', 'rgba(201,165,128,0.8)',
+        'rgba(224,196,168,0.8)', 'rgba(245,228,212,0.8)'
+    ];
+
+    // ── Chart 1: Doanh thu (Line Chart) ───────────────────────────────
+    const revenueCtx = document.getElementById('revenueChart');
+    if (revenueCtx && revenueLabels.length > 0) {
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: revenueLabels,
+                datasets: [
+                    {
+                        label: 'Doanh thu (đ)',
+                        data: revenueAmounts,
+                        backgroundColor: primaryColor,
+                        borderColor: primaryBorder,
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Số đơn hàng',
+                        data: revenueOrders,
+                        type: 'line',
+                        borderColor: accentColor,
+                        backgroundColor: 'transparent',
+                        pointBackgroundColor: accentColor,
+                        pointRadius: 5,
+                        tension: 0.4,
+                        yAxisID: 'y2'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.datasetIndex === 0
+                                ? ` ${ctx.raw.toLocaleString('vi-VN')} đ`
+                                : ` ${ctx.raw} đơn`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        ticks: {
+                            callback: val => val.toLocaleString('vi-VN') + ' đ'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        ticks: { stepSize: 1 }
+                    }
+                }
+            }
+        });
+    }
+
+    // ── Chart 2: Top 5 (Horizontal Bar) ───────────────────────────────
+    const top5Ctx = document.getElementById('top5Chart');
+    if (top5Ctx && top5Names.length > 0) {
+        new Chart(top5Ctx, {
+            type: 'bar',
+            data: {
+                labels: top5Names,
+                datasets: [{
+                    label: 'Số lượng bán',
+                    data: top5Sold,
+                    backgroundColor: top5Colors,
+                    borderColor: top5Colors.map(c => c.replace('0.8', '1').replace('0.85','1')),
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',   // Horizontal bar
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: (ctx) => {
+                                const rev = top5Revenue[ctx.dataIndex];
+                                return `Doanh thu: ${rev.toLocaleString('vi-VN')} đ`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    }
+                }
+            }
+        });
+    }
+</script>
+}

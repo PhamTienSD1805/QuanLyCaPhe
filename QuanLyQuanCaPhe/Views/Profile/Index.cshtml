@@ -1,0 +1,177 @@
+@model QuanLyQuanCaPhe.Models.ProfileViewModel
+@{
+    ViewData["Title"] = "Hồ sơ cá nhân";
+    string roleName  = User.IsInRole("Manager") ? "Quản lý" : "Nhân viên";
+    string roleClass = User.IsInRole("Manager") ? "bg-warning text-dark" : "bg-secondary";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-person-circle me-2"></i>Hồ sơ cá nhân</h4>
+</div>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success d-flex gap-2 align-items-center py-2 mb-3">
+        <i class="bi bi-check-circle-fill"></i>
+        <span>@ViewBag.SuccessMessage</span>
+    </div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger d-flex gap-2 align-items-center py-2 mb-3">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>@ViewBag.ErrorMessage</span>
+    </div>
+}
+
+<div class="row g-4">
+
+    <!-- Avatar & Info Card -->
+    <div class="col-lg-3">
+        <div class="card text-center p-3">
+            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                 style="width:90px;height:90px;background:var(--color-primary);">
+                <i class="bi bi-person-fill fs-1 text-white"></i>
+            </div>
+            <h6 class="fw-bold mb-1">@Model.FullName</h6>
+            <div class="text-muted small mb-2">@Model.Email</div>
+            <span class="badge @roleClass">@roleName</span>
+            <hr />
+            <div class="text-start small">
+                <div class="mb-1">
+                    <i class="bi bi-telephone me-2 text-muted"></i>
+                    @(Model.Phone ?? "Chưa cập nhật")
+                </div>
+                <div>
+                    <i class="bi bi-circle-fill me-2 @(Model.Active ? "text-success" : "text-secondary")" style="font-size:8px;"></i>
+                    @(Model.Active ? "Đang hoạt động" : "Đã khóa")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Form Card -->
+    <div class="col-lg-9">
+        <form asp-action="Index" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Thông tin cá nhân -->
+            <div class="card mb-3">
+                <div class="card-header fw-semibold">
+                    <i class="bi bi-person me-2" style="color:var(--color-primary);"></i>
+                    Thông tin cá nhân
+                </div>
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+                    <!-- Email (read-only) -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="text" class="form-control bg-light" value="@Model.Email" readonly />
+                        </div>
+                        <div class="form-text">Email không thể thay đổi.</div>
+                    </div>
+
+                    <!-- Họ tên -->
+                    <div class="mb-3">
+                        <label asp-for="FullName" class="form-label fw-semibold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input asp-for="FullName" class="form-control" />
+                        </div>
+                        <span asp-validation-for="FullName" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Số điện thoại -->
+                    <div class="mb-0">
+                        <label asp-for="Phone" class="form-label fw-semibold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                            <input asp-for="Phone" class="form-control" placeholder="0901 234 567" />
+                        </div>
+                        <span asp-validation-for="Phone" class="text-danger small"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Đổi mật khẩu -->
+            <div class="card mb-3">
+                <div class="card-header fw-semibold" data-bs-toggle="collapse"
+                     data-bs-target="#pw-section" style="cursor:pointer;">
+                    <i class="bi bi-lock me-2" style="color:var(--color-primary);"></i>
+                    Đổi mật khẩu
+                    <span class="text-muted small ms-2">(tuỳ chọn — để trống nếu không muốn đổi)</span>
+                    <i class="bi bi-chevron-down float-end"></i>
+                </div>
+                <div class="collapse" id="pw-section">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label asp-for="CurrentPassword" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input asp-for="CurrentPassword" type="password" class="form-control"
+                                       placeholder="Nhập mật khẩu hiện tại" autocomplete="current-password" />
+                            </div>
+                            <span asp-validation-for="CurrentPassword" class="text-danger small"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NewPassword" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                <input asp-for="NewPassword" type="password" id="new-pw-profile"
+                                       class="form-control" placeholder="Tối thiểu 4 ký tự"
+                                       autocomplete="new-password"
+                                       oninput="checkPwMatch()" />
+                            </div>
+                            <span asp-validation-for="NewPassword" class="text-danger small"></span>
+                        </div>
+                        <div class="mb-0">
+                            <label asp-for="ConfirmPassword" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                <input asp-for="ConfirmPassword" type="password" id="confirm-pw-profile"
+                                       class="form-control" placeholder="Nhập lại mật khẩu mới"
+                                       autocomplete="new-password"
+                                       oninput="checkPwMatch()" />
+                            </div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                            <div id="pw-match-msg" class="small mt-1 d-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-coffee">
+                    <i class="bi bi-save me-1"></i>Lưu thay đổi
+                </button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x me-1"></i>Hủy
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+    function checkPwMatch() {
+        const pw1 = document.getElementById('new-pw-profile')?.value;
+        const pw2 = document.getElementById('confirm-pw-profile')?.value;
+        const msg = document.getElementById('pw-match-msg');
+        if (!msg || !pw2) return;
+        msg.classList.remove('d-none');
+        if (pw1 === pw2) {
+            msg.textContent = '✓ Mật khẩu khớp';
+            msg.className = 'small mt-1 text-success';
+        } else {
+            msg.textContent = '✗ Mật khẩu chưa khớp';
+            msg.className = 'small mt-1 text-danger';
+        }
+    }
+    </script>
+}

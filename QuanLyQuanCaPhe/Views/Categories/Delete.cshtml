@@ -1,0 +1,33 @@
+@model QuanLyQuanCaPhe.Models.Category
+@{
+    ViewData["Title"] = "Xóa danh mục";
+}
+
+<div class="d-flex align-items-center mb-3 gap-2">
+    <a asp-action="Index" class="btn btn-secondary btn-sm">← Quay lại</a>
+    <h2 class="mb-0 text-danger">Xóa danh mục</h2>
+</div>
+
+<div class="card border-danger shadow-sm" style="max-width:480px">
+    <div class="card-header bg-danger text-white">
+        ⚠️ Xác nhận xóa
+    </div>
+    <div class="card-body">
+        <p>Bạn có chắc muốn xóa danh mục sau không?</p>
+        <dl class="row">
+            <dt class="col-sm-4">ID</dt>
+            <dd class="col-sm-8">@Model.Id</dd>
+            <dt class="col-sm-4">Tên</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+            <dt class="col-sm-4">Trạng thái</dt>
+            <dd class="col-sm-8">@(Model.Active ? "Đang hoạt động" : "Ẩn")</dd>
+        </dl>
+    </div>
+    <div class="card-footer d-flex gap-2">
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+        </form>
+        <a asp-action="Index" class="btn btn-outline-secondary">Hủy</a>
+    </div>
+</div>

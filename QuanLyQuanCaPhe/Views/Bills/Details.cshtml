@@ -1,0 +1,96 @@
+@model IEnumerable<QuanLyQuanCaPhe.Models.BillDetail>
+@{
+    ViewData["Title"] = "Chi tiết hóa đơn";
+    var bill   = (QuanLyQuanCaPhe.Models.Bill)ViewBag.Bill;
+    var drinks = (Dictionary<int, QuanLyQuanCaPhe.Models.Drink>)ViewBag.Drinks;
+    var employeeName = (string)(ViewBag.EmployeeName ?? "—");
+
+    var (badgeClass, badgeText) = bill.Status switch
+    {
+        QuanLyQuanCaPhe.Models.BillStatus.Done      => ("bg-success", "Hoàn thành"),
+        QuanLyQuanCaPhe.Models.BillStatus.Pending   => ("bg-warning text-dark", "Chờ xử lý"),
+        QuanLyQuanCaPhe.Models.BillStatus.Cancelled => ("bg-secondary", "Đã hủy"),
+        _                                            => ("bg-light text-dark", "—")
+    };
+}
+
+<div class="d-flex align-items-center mb-3">
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm me-3"><i class="bi bi-arrow-left"></i></a>
+    <h4 class="mb-0"><i class="bi bi-receipt me-2 text-primary"></i>Chi tiết hóa đơn</h4>
+</div>
+
+<!-- Bill header -->
+<div class="card border-0 shadow-sm mb-3" style="max-width:720px;">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-sm-3">
+                <div class="text-muted small">Mã hóa đơn</div>
+                <div class="fs-5 fw-bold">@bill.Code</div>
+            </div>
+            <div class="col-sm-3">
+                <div class="text-muted small">Thời gian</div>
+                <div class="fw-medium">@bill.CreatedAt.ToString("dd/MM/yyyy HH:mm")</div>
+            </div>
+            <div class="col-sm-3">
+                <div class="text-muted small"><i class="bi bi-person me-1"></i>Nhân viên</div>
+                <div class="fw-medium">@employeeName</div>
+            </div>
+            <div class="col-sm-3">
+                <div class="text-muted small">Tổng tiền</div>
+                <div class="fs-5 fw-bold text-success">@bill.Total.ToString("N0") đ</div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <span class="badge @badgeClass fs-6">@badgeText</span>
+        </div>
+    </div>
+</div>
+
+<!-- Details table -->
+<div class="card border-0 shadow-sm mb-3" style="max-width:720px;">
+    <div class="card-header bg-white border-0 pt-3">
+        <h6 class="mb-0 fw-semibold"><i class="bi bi-list-ul me-2"></i>Danh sách món</h6>
+    </div>
+    <div class="card-body p-0">
+        <table class="table mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Đồ uống</th>
+                    <th class="text-center">Số lượng</th>
+                    <th class="text-end">Đơn giá</th>
+                    <th class="text-end">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model)
+                {
+                    var name = drinks.TryGetValue(d.DrinkId, out var drink) ? drink.Name : $"Món #{d.DrinkId}";
+                    <tr>
+                        <td class="align-middle">@name</td>
+                        <td class="align-middle text-center">@d.Quantity</td>
+                        <td class="align-middle text-end">@d.Price.ToString("N0") đ</td>
+                        <td class="align-middle text-end fw-medium">@((d.Quantity * d.Price).ToString("N0")) đ</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot class="table-light">
+                <tr>
+                    <td colspan="3" class="text-end fw-bold">Tổng cộng:</td>
+                    <td class="text-end fw-bold text-success">@bill.Total.ToString("N0") đ</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!-- Manager actions -->
+@if (User.IsInRole("Manager") && bill.Status != QuanLyQuanCaPhe.Models.BillStatus.Cancelled)
+{
+    <form asp-action="Cancel" asp-route-id="@bill.Id" method="post" class="d-inline"
+          onsubmit="return confirm('Bạn có chắc muốn HỦY hóa đơn này?');">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-danger btn-sm">
+            <i class="bi bi-x-circle me-1"></i>Hủy hóa đơn
+        </button>
+    </form>
+}

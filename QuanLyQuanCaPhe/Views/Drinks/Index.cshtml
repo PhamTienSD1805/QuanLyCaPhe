@@ -1,0 +1,128 @@
+@model IEnumerable<QuanLyQuanCaPhe.Models.Drink>
+@{
+    ViewData["Title"] = "Đồ uống";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-cup-straw me-2"></i>Danh sách đồ uống</h4>
+    @if (User.IsInRole("Manager"))
+    {
+        <a asp-action="Create" class="btn btn-coffee">
+            <i class="bi bi-plus-circle me-1"></i>Thêm đồ uống
+        </a>
+    }
+</div>
+
+<!-- Search / Filter -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get">
+            <div class="row g-2 align-items-end">
+                <div class="col-md-5">
+                    <label class="form-label">Tìm theo tên</label>
+                    <input type="text" name="name" value="@ViewBag.SearchName"
+                           class="form-control" placeholder="Nhập tên đồ uống..." />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Danh mục</label>
+                    <select name="categoryId" class="form-select">
+                        <option value="">-- Tất cả --</option>
+                        @foreach (var cat in (SelectList)ViewBag.Categories)
+                        {
+                            <option value="@cat.Value" selected="@(cat.Selected ? "selected" : null)">@cat.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-coffee flex-grow-1">
+                        <i class="bi bi-search me-1"></i>Tìm
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Tên đồ uống</th>
+                        <th>Danh mục</th>
+                        <th class="text-end">Giá</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrEmpty(d.Image))
+                                {
+                                    <img src="@d.Image" alt="@d.Name"
+                                         style="width:48px;height:48px;object-fit:cover;border-radius:8px;" />
+                                }
+                                else
+                                {
+                                    <div class="d-flex align-items-center justify-content-center bg-light rounded"
+                                         style="width:48px;height:48px;">
+                                        <i class="bi bi-cup-straw text-muted"></i>
+                                    </div>
+                                }
+                            </td>
+                            <td class="fw-semibold">@d.Name</td>
+                            <td class="text-muted">
+                                @{
+                                    var catName = ((SelectList)ViewBag.Categories)
+                                        .FirstOrDefault(c => c.Value == d.CategoryId.ToString())?.Text ?? "—";
+                                }
+                                @catName
+                            </td>
+                            <td class="text-end fw-semibold">@d.Price.ToString("N0") đ</td>
+                            <td class="text-center">
+                                <span class="badge @(d.Active ? "bg-success" : "bg-secondary")">
+                                    @(d.Active ? "Đang bán" : "Ngưng")
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@d.Id"
+                                   class="btn btn-sm btn-outline-secondary" title="Chi tiết">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@d.Id"
+                                       class="btn btn-sm btn-outline-warning" title="Sửa">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@d.Id"
+                                       class="btn btn-sm btn-outline-danger" title="Ngưng bán">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-5">
+                                <i class="bi bi-search d-block fs-2 mb-2"></i>
+                                Không tìm thấy đồ uống nào
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

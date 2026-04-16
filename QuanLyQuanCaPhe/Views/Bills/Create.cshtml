@@ -1,0 +1,148 @@
+@model QuanLyQuanCaPhe.Models.PosViewModel
+@{
+    ViewData["Title"] = "Bán hàng (POS)";
+}
+
+<div class="page-header">
+    <h4><i class="bi bi-cart-plus me-2"></i>Bán hàng</h4>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-receipt me-1"></i>Xem hóa đơn
+    </a>
+</div>
+
+<div class="row g-3">
+    <!-- LEFT: Drink list -->
+    <div class="col-lg-7">
+        <div class="card h-100">
+            <div class="card-header">
+                <form method="get" class="row g-2">
+                    <div class="col-7">
+                        <input type="text" name="name" value="@Model.SearchName"
+                               class="form-control form-control-sm" placeholder="Tìm tên đồ uống..." />
+                    </div>
+                    <div class="col-3">
+                        <select name="categoryId" class="form-select form-select-sm">
+                            <option value="">Tất cả</option>
+                            @foreach (var cat in Model.Categories)
+                            {
+                                <option value="@cat.Id" selected="@(Model.CategoryId == cat.Id ? "selected" : null)">@cat.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-coffee btn-sm w-100">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    @foreach (var d in Model.Drinks)
+                    {
+                        <div class="col-6 col-md-4">
+                            <div class="drink-card card h-100 text-center p-2">
+                                @if (!string.IsNullOrEmpty(d.Image))
+                                {
+                                    <img src="@d.Image" alt="@d.Name"
+                                         style="width:72px;height:72px;object-fit:cover;border-radius:8px;margin:0 auto 8px;" />
+                                }
+                                else
+                                {
+                                    <div class="d-flex align-items-center justify-content-center bg-light rounded mx-auto mb-2"
+                                         style="width:72px;height:72px;">
+                                        <i class="bi bi-cup-straw fs-3 text-muted"></i>
+                                    </div>
+                                }
+                                <div class="fw-semibold small text-truncate">@d.Name</div>
+                                <div class="text-success fw-bold small mb-2">@d.Price.ToString("N0") đ</div>
+                                <form asp-action="AddToCart" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="drinkId" value="@d.Id" />
+                                    <input type="hidden" name="qty" value="1" />
+                                    <button type="submit" class="btn btn-coffee btn-sm w-100">
+                                        <i class="bi bi-plus-circle me-1"></i>Thêm
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    @if (!Model.Drinks.Any())
+                    {
+                        <div class="col-12 text-center text-muted py-5">
+                            <i class="bi bi-search fs-2 d-block mb-2"></i>Không tìm thấy đồ uống
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: Cart -->
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header" style="background:var(--color-primary);color:#fff;">
+                <span><i class="bi bi-cart3 me-2"></i>Giỏ hàng</span>
+                <span class="badge bg-light text-dark ms-1">@Model.Cart.Count món</span>
+            </div>
+            <div class="card-body p-0" style="min-height:200px;">
+                @if (Model.Cart.Any())
+                {
+                    <table class="table table-sm mb-0">
+                        <thead>
+                            <tr>
+                                <th>Món</th>
+                                <th class="text-center">SL</th>
+                                <th class="text-end">Tổng</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Cart)
+                            {
+                                <tr>
+                                    <td class="small fw-medium">@item.DrinkName</td>
+                                    <td class="text-center">
+                                        <span class="badge" style="background:var(--color-primary);">@item.Quantity</span>
+                                    </td>
+                                    <td class="text-end small">@item.LineTotal.ToString("N0") đ</td>
+                                    <td class="text-end">
+                                        <form asp-action="RemoveFromCart" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="drinkId" value="@item.DrinkId" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger p-0 px-1" title="Xóa">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="text-center text-muted py-5">
+                        <i class="bi bi-cart-x fs-2 d-block mb-2"></i>Giỏ hàng trống
+                    </div>
+                }
+            </div>
+            @if (Model.Cart.Any())
+            {
+                <div class="card-header border-top" style="background:#fff;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-bold">Tổng cộng:</span>
+                        <span class="cart-total">@Model.CartTotal.ToString("N0") đ</span>
+                    </div>
+                    <form asp-action="Checkout" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-success w-100"
+                                onclick="return confirm('Xác nhận thanh toán @Model.CartTotal.ToString("N0") đ?');">
+                            <i class="bi bi-bag-check me-1"></i>Thanh toán
+                        </button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>

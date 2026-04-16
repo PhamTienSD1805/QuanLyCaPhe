@@ -1,0 +1,77 @@
+@model QuanLyQuanCaPhe.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "_Layout";
+}
+
+<div class="d-flex align-items-center justify-content-center" style="min-height:80vh;">
+    <div style="width:100%;max-width:420px;">
+
+        <!-- Logo / brand -->
+        <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                 style="width:72px;height:72px;background:var(--color-primary);">
+                <i class="bi bi-cup-hot-fill fs-2 text-white"></i>
+            </div>
+            <h4 class="fw-bold mb-0" style="color:var(--color-primary);">Cafe Manager</h4>
+            <div class="text-muted small">Quản lý quán cà phê</div>
+        </div>
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success d-flex gap-2 align-items-center py-2 mb-3">
+                <i class="bi bi-check-circle-fill flex-shrink-0"></i>
+                <span class="small">@ViewBag.SuccessMessage</span>
+            </div>
+        }
+
+        <div class="card">
+            <div class="card-header text-center" style="background:var(--color-primary);color:#fff;">
+                <span class="fw-semibold">Đăng nhập hệ thống</span>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Login" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="border-color:#d5c4b8;"><i class="bi bi-envelope"></i></span>
+                            <input asp-for="Email" class="form-control" placeholder="email@cafe.vn" autocomplete="username" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Password" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="border-color:#d5c4b8;"><i class="bi bi-lock"></i></span>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="••••••" autocomplete="current-password" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-coffee">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Đăng nhập
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <a asp-action="ForgotPassword" class="small text-decoration-none" style="color:var(--color-primary);">
+                            <i class="bi bi-key me-1"></i>Quên mật khẩu?
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center text-muted small">
+                Quản lý quán cà phê &copy; 2026
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

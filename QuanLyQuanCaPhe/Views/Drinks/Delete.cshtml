@@ -1,0 +1,30 @@
+@model QuanLyQuanCaPhe.Models.Drink
+@{
+    ViewData["Title"] = "Ngưng đồ uống";
+}
+
+<div class="d-flex align-items-center mb-3">
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm me-3"><i class="bi bi-arrow-left"></i></a>
+    <h4 class="mb-0 text-danger"><i class="bi bi-trash me-2"></i>Xác nhận ngưng bán</h4>
+</div>
+
+<div class="card border-0 shadow-sm" style="max-width:480px;">
+    <div class="card-body">
+        <p class="mb-1">Bạn có chắc muốn <strong>ngưng bán</strong> đồ uống sau?</p>
+        <div class="border rounded p-3 bg-light mb-3">
+            <div class="fw-bold">@Model.Name</div>
+            <div class="text-muted small">Giá: @Model.Price.ToString("N0") đ</div>
+        </div>
+        <div class="alert alert-warning py-2 small">
+            <i class="bi bi-info-circle me-1"></i>Đây là <strong>soft delete</strong> — đồ uống không bị xóa khỏi CSDL, chỉ ẩn khỏi danh sách bán hàng.
+        </div>
+        <form asp-action="Delete" method="post" class="d-flex gap-2">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash me-1"></i>Xác nhận ngưng
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Hủy</a>
+        </form>
+    </div>
+</div>

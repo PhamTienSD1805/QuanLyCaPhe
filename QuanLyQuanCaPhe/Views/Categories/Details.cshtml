@@ -1,0 +1,40 @@
+@model QuanLyQuanCaPhe.Models.Category
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+}
+
+<div class="d-flex align-items-center mb-3 gap-2">
+    <a asp-action="Index" class="btn btn-secondary btn-sm">← Quay lại</a>
+    <h2 class="mb-0">Chi tiết danh mục</h2>
+</div>
+
+<div class="card shadow-sm" style="max-width:480px">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">ID</dt>
+            <dd class="col-sm-8">@Model.Id</dd>
+
+            <dt class="col-sm-4">Tên</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Trạng thái</dt>
+            <dd class="col-sm-8">
+                @if (Model.Active)
+                {
+                    <span class="badge bg-success">Đang hoạt động</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Ẩn</span>
+                }
+            </dd>
+        </dl>
+    </div>
+    @if (User.IsInRole("Manager"))
+    {
+        <div class="card-footer d-flex gap-2">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">Sửa</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">Xóa</a>
+        </div>
+    }
+</div>
